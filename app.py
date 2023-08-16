@@ -14,6 +14,22 @@ app = Flask(__name__)
 # == Your Routes Here ==
 
 
+@app.route('/artists', methods=['GET'])
+def get_artists():
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    artists = repository.all()
+    return render_template("artists/index.html", artists=artists)
+
+
+@app.route('/artists/<id>')
+def get_artist(id):
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    artist = repository.find_artist(id)
+    return render_template("artists/show.html", artist=artist)
+
+
 @app.route('/albums', methods=['GET'])
 def get_albums():
     connection = get_flask_database_connection(app)
@@ -22,7 +38,7 @@ def get_albums():
     return render_template("albums/index.html", albums=albums)
 
 
-@app.route('/album/1', methods=['GET'])
+@app.route('/album/id1', methods=['GET'])
 def get_album_by_id():
     connection = get_flask_database_connection(app)
     repository = AlbumRepository(connection)
@@ -30,12 +46,20 @@ def get_album_by_id():
     return render_template("album/index_1.html", album=one_album)
 
 
-@app.route('/album/2', methods=['GET'])
+@app.route('/album/id2', methods=['GET'])
 def get_album_by_id_two():
     connection = get_flask_database_connection(app)
     repository = AlbumRepository(connection)
     one_album = repository.find_album(2)
     return render_template("album/index_2.html", album=one_album)
+
+
+@app.route('/albums/<id>')
+def get_Album(id):
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+    album = repository.find_album(id)
+    return render_template("albums/show.html", album=album)
 
 # == Example Code Below ==
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Albums</title>
+    <title>Artists</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -32,14 +32,13 @@
     </style>
   </head>
   <body>
-    <h1>Albums</h1>
-    {% for album in albums %}
+    <h1>Artists</h1>
+    {% for artist in artists %}
     <article>
       <div>
         <h2>
-          <a href="/albums/{{album.id}}">{{album.title}}</a>
+          <a href="/artists/{{artist.id}}">{{artist.name}}</a>
         </h2>
-        <!-- <p>Released: {{album.release_year}}</p> -->
       </div>
     </article>
 

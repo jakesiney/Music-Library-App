@@ -18,3 +18,9 @@ class ArtistRepository:
         self._connection.execute('INSERT INTO artists (name, genre) VALUES (%s, %s)', [
                                  artist.name, artist.genre])
         return None
+
+    def find_artist(self, id):
+        rows = self._connection.execute(
+            'SELECT * from artists WHERE id = %s', [id])
+        row = rows[0]
+        return Artist(row["id"], row["name"], row["genre"])
