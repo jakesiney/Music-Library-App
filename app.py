@@ -22,49 +22,20 @@ def get_albums():
     return render_template("albums/index.html", albums=albums)
 
 
-# @app.route('/albums', methods=['POST'])
-# def post_album():
-#     connection = get_flask_database_connection(app)
-#     repository = AlbumRepository(connection)
-#     album = Album(
-#         None,
-#         request.form['title'],
-#         request.form['release_year'],
-#         request.form['artist_id'],
-#     )
-#     repository.create(album)
-#     return "", 200
-
-
-# @app.route('/albums', methods=['GET'])
-# def get_albums():
-#     connection = get_flask_database_connection(app)
-#     repository = AlbumRepository(connection)
-#     return "\n".join(
-#         f"{album}" for album in repository.all()
-
-#     )
-
-
-@app.route('/artist', methods=['POST'])
-def post_artist():
+@app.route('/album/1', methods=['GET'])
+def get_album_by_id():
     connection = get_flask_database_connection(app)
-    repository = ArtistRepository(connection)
-    artist = Artist(
-        request.form['name'],
-        request.form['genre']
-    )
-    repository.create(artist)
-    return "", 200
+    repository = AlbumRepository(connection)
+    one_album = repository.find_album(1)
+    return render_template("album/index_1.html", album=one_album)
 
 
-@app.route('/artist', methods=['GET'])
-def get_artists():
+@app.route('/album/2', methods=['GET'])
+def get_album_by_id_two():
     connection = get_flask_database_connection(app)
-    repository = ArtistRepository(connection)
-
-    return "\n".join(
-        f"{artist}" for artist in repository.all())
+    repository = AlbumRepository(connection)
+    one_album = repository.find_album(2)
+    return render_template("album/index_2.html", album=one_album)
 
 # == Example Code Below ==
 

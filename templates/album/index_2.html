@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Albums</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #3498db, #e74c3c);
+        background-attachment: fixed;
+      }
+
+      h1 {
+        text-align: center;
+        color: #fff;
+        padding: 20px;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      div {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Single Album</h1>
+
+    <article>
+      <div>
+        <h2>{{album.title}}</h2>
+        <p>Released: {{album.release_year}}</p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -34,4 +34,4 @@ INSERT INTO artists (name, genre) VALUES ('Taylor Swift', 'Pop');
 INSERT INTO artists (name, genre) VALUES ('Nina Simone', 'Jazz');
 
 INSERT INTO albums (title, release_year, artist_id) VALUES ('An Album', 2023, 1);
-INSERT INTO albums (title, release_year, artist_id) VALUES ('Another Album', 2023, 1);
+INSERT INTO albums (title, release_year, artist_id) VALUES ('Another Album', 1999, 2);
