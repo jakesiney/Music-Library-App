@@ -6,6 +6,16 @@ from playwright.sync_api import Page, expect
 def test_get_albums(page, test_web_address, db_connection):
     db_connection.seed("seeds/music_app.sql")
     page.goto(f"http://{test_web_address}/albums")
+    h2_tags = page.locator("h2")
+    paragraph_tags = page.locator("p")
+    expect(h2_tags).to_have_text([
+        "An Album",
+        "Another Album",
+    ])
+    expect(paragraph_tags).to_have_text([
+        "Released: 2023",
+        "Released: 2023"
+    ])
 
 
 # === Example Code Below ===

@@ -8,8 +8,8 @@ parts of the project work, or you can delete it and start from scratch.
 
 There are two videos to support:
 
-* [A demonstration of setting up the project](https://www.youtube.com/watch?v=YStsRfMVx44&t=0s)
-* [A walkthrough of the project codebase](https://www.youtube.com/watch?v=YStsRfMVx44&t=314s) 
+- [A demonstration of setting up the project](https://www.youtube.com/watch?v=YStsRfMVx44&t=0s)
+- [A walkthrough of the project codebase](https://www.youtube.com/watch?v=YStsRfMVx44&t=314s)
 
 ## Setup
 
@@ -48,7 +48,7 @@ There are two videos to support:
 
 # Run the app
 ; python app.py
-# Now visit http://localhost:5000/emoji in your browser
+# Now visit http://localhost:8000/emoji in your browser
 ```
 
 If you would like to remove the example code:
@@ -56,7 +56,6 @@ If you would like to remove the example code:
 ```shell
 ; ./remove_example_code.sh
 ```
-
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

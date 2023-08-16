@@ -14,28 +14,36 @@ app = Flask(__name__)
 # == Your Routes Here ==
 
 
-@app.route('/albums', methods=['POST'])
-def post_album():
-    connection = get_flask_database_connection(app)
-    repository = AlbumRepository(connection)
-    album = Album(
-        None,
-        request.form['title'],
-        request.form['release_year'],
-        request.form['artist_id'],
-    )
-    repository.create(album)
-    return "", 200
-
-
 @app.route('/albums', methods=['GET'])
 def get_albums():
     connection = get_flask_database_connection(app)
     repository = AlbumRepository(connection)
-    return "\n".join(
-        f"{album}" for album in repository.all()
+    albums = repository.all()
+    return render_template("albums/index.html", albums=albums)
 
-    )
+
+# @app.route('/albums', methods=['POST'])
+# def post_album():
+#     connection = get_flask_database_connection(app)
+#     repository = AlbumRepository(connection)
+#     album = Album(
+#         None,
+#         request.form['title'],
+#         request.form['release_year'],
+#         request.form['artist_id'],
+#     )
+#     repository.create(album)
+#     return "", 200
+
+
+# @app.route('/albums', methods=['GET'])
+# def get_albums():
+#     connection = get_flask_database_connection(app)
+#     repository = AlbumRepository(connection)
+#     return "\n".join(
+#         f"{album}" for album in repository.all()
+
+#     )
 
 
 @app.route('/artist', methods=['POST'])
