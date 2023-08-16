@@ -61,6 +61,12 @@ def get_Album(id):
     album = repository.find_album(id)
     return render_template("albums/show.html", album=album)
 
+
+@app.route('/albums/new')
+def get_album_new():
+    return render_template('albums/new.html')
+
+
 # == Example Code Below ==
 
 # GET /emoji
