@@ -9,8 +9,14 @@ def test_create_album(page, test_web_address, db_connection):
     page.goto(f"http://{test_web_address}/albums")
     page.click('text="Add An Album"')
 
-    page.fill('input[name=title]', "Test title")
+    page.fill('input[name=title]', "Test Album")
     page.fill('input[name=release_year]', "1234")
+    page.click('text="Add Album"')
+
+    h1_tag = page.locator("h1")
+    expect(h1_tag).to_have_text("Test Album")
+    release_year_tag = page.locater(".t-release-year")
+    expect(release_year_tag).to_have_text("Released: 1234")
 
 
 # def test_get_artists(page, test_web_address, db_connection):
@@ -63,14 +69,24 @@ def test_create_album(page, test_web_address, db_connection):
 #     expect(paragraph_tags).to_have_text = 'Released: 1999'
 
 
-# def test_visit_album_page(page, test_web_address, db_connection):
-#     db_connection.seed("seeds/music_app.sql")
-#     page.goto(f"http://{test_web_address}/albums")
-#     page.click("text='Another Album'")
-#     h1_tag = page.locator("h1")
-#     expect(h1_tag).to_have_text("Another Album")
-#     paragraph_tag = page.locator("p")
-#     expect(paragraph_tag).to_have_text("Released: 1999")
+def test_visit_album_show_page(page, test_web_address, db_connection):
+    db_connection.seed("seeds/music_app.sql")
+    page.goto(f"http://{test_web_address}/albums")
+    page.click("text='Another Album'")
+    h1_tag = page.locator("h1")
+    expect(h1_tag).to_have_text("Another Album")
+    release_year_tag = page.locator(".t-release-year")
+    expect(release_year_tag).to_have_text("Released: 1999")
+
+
+def test_visit_album_page_and_go_back(page, test_web_address, db_connection):
+    db_connection.seed("seeds/music_app.sql")
+    page.goto(f"http://{test_web_address}/albums")
+    page.click("text='Another Album'")
+    page.click("text='Go back to albums'")
+    h1_tag = page.locator("h1")
+    expect(h1_tag).to_have_text("Albums")
+
 
 # === Example Code Below ===
 """

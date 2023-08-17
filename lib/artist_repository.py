@@ -15,8 +15,9 @@ class ArtistRepository:
         return artists
 
     def create(self, artist):
-        self._connection.execute('INSERT INTO artists (name, genre) VALUES (%s, %s)', [
-                                 artist.name, artist.genre])
+        rows = self._connection.execute('INSERT INTO artists (name, genre) VALUES (%s, %s) RETURNING id', [
+            artist.name, artist.genre])
+        artist.id = rows[0]['id']
         return None
 
     def find_artist(self, id):
@@ -24,3 +25,8 @@ class ArtistRepository:
             'SELECT * from artists WHERE id = %s', [id])
         row = rows[0]
         return Artist(row["id"], row["name"], row["genre"])
+
+    def delete(self, artist_id):
+        self._connection.execute(
+            'DELETE FROM artists WHERE id = %s', [artist_id])
+        return None

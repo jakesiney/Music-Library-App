@@ -33,8 +33,11 @@
   </head>
   <body>
     <h1>{{album.title}}</h1>
+    <div><a href="/albums">Go back to albums</a></div>
     <div>
-      <p>Released: {{album.release_year}}</p>
+      <h2 class="t-release-year">Released: {{album.release_year}}</h2>
+
+      <h2>Artist id: {{album.artist_id}}</h2>
     </div>
   </body>
 </html>

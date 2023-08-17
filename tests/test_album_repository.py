@@ -25,8 +25,9 @@ Creating an album in the db returns all albums.
 def test_create_album(db_connection):
     db_connection.seed("seeds/music_app.sql")
     repository = AlbumRepository(db_connection)
-    repository.create(Album(None, 'New Album', 2023, 3))
-
+    album = Album(None, 'New Album', 2023, 3)
+    repository.create(album)
+    assert album.id == 3
     assert repository.all() == [
         Album(1, "An Album", 2023, 1),
         Album(2, "Another Album", 1999, 2),

@@ -1,6 +1,6 @@
 from example_routes import apply_example_routes
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from lib.database_connection import get_flask_database_connection
 from lib.album_repository import AlbumRepository
 from lib.artist_repository import ArtistRepository
@@ -55,7 +55,7 @@ def get_album_by_id_two():
 
 
 @app.route('/albums/<id>')
-def get_Album(id):
+def get_album(id):
     connection = get_flask_database_connection(app)
     repository = AlbumRepository(connection)
     album = repository.find_album(id)
@@ -65,6 +65,37 @@ def get_Album(id):
 @app.route('/albums/new')
 def get_album_new():
     return render_template('albums/new.html')
+
+
+@app.route('/artists/new')
+def get_artist_new():
+    return render_template('artists/new.html')
+
+
+@app.route('/albums', methods=['POST'])
+def create_album():
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+
+    title = request.form['title']
+    release_year = int(request.form['release_year'])
+    album = Album(None, title, release_year, 1)
+
+    repository.create(album)
+    return redirect(f'/albums/{album.id}')
+
+
+@app.route('/artists', methods=['POST'])
+def create_artist():
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+
+    name = request.form['name']
+    genre = request.form['genre']
+    artist = Artist(None, name, genre)
+
+    repository.create(artist)
+    return redirect(f'/artists/{artist.id}')
 
 
 # == Example Code Below ==
