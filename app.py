@@ -98,6 +98,15 @@ def create_artist():
     return redirect(f'/artists/{artist.id}')
 
 
+@app.route('/artists/<id>/delete', methods=['POST'])
+def delete_artist(id):
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+
+    repository.delete_artist(id)
+    return redirect('/artists')
+
+
 # == Example Code Below ==
 
 # GET /emoji

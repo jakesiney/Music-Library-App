@@ -26,7 +26,7 @@ class ArtistRepository:
         row = rows[0]
         return Artist(row["id"], row["name"], row["genre"])
 
-    def delete(self, artist_id):
+    def delete_artist(self, artist_id):
         self._connection.execute(
             'DELETE FROM artists WHERE id = %s', [artist_id])
         return None
