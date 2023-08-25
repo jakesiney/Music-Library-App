@@ -30,8 +30,8 @@ h1 {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  /* transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); */
 }
 
 .button:hover {
