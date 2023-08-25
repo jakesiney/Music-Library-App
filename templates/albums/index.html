@@ -9,11 +9,12 @@
   <body>
     <h1>Albums</h1>
     <div>
+      <h2><a href="/landing" class="button">Home</a></h2>
       <h2><a href="/albums/new" class="button">Add An Album</a></h2>
     </div>
     {% for album in albums %}
     <article>
-      <div>
+      <div class="lists">
         <h2>
           <a href="/albums/{{album.id}}">{{album.title}}</a>
         </h2>

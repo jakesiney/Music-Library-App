@@ -14,6 +14,11 @@ app = Flask(__name__)
 # == Your Routes Here ==
 
 
+@app.route('/landing', methods=['GET'])
+def landing():
+    return render_template("landing/index.html")
+
+
 @app.route('/artists', methods=['GET'])
 def get_artists():
     connection = get_flask_database_connection(app)

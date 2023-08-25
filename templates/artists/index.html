@@ -8,17 +8,20 @@
   </head>
   <body>
     <h1>Artists</h1>
-    <div>
-      <h2><a href="/artists/new" class="button">Add An Artist</a></h2>
+
+    <div class="nav">
+      <a href="/landing" class="button">Home</a>
+      <a href="/albums" class="button">Albums</a>
+      <a href="/artists/new" class="button">Add An Artist</a>
     </div>
+
     {% for artist in artists %}
-    <article>
-      <div>
-        <h2>
-          <a href="/artists/{{artist.id}}">{{artist.name}}</a>
-        </h2>
-      </div>
-    </article>
+
+    <div class="lists">
+      <h2>
+        <a href="/artists/{{artist.id}}">{{artist.name}}</a>
+      </h2>
+    </div>
 
     {% endfor %}
   </body>
