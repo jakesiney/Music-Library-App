@@ -11,23 +11,10 @@ def test_create_album(page, test_web_address, db_connection):
     page.fill('input[name=title]', "Test Album")
     page.fill('input[name=release_year]', "1234")
     page.click('text="Add Album"')
-
     title_element = page.locator(".t-title")
     year_element = page.locator(".t-release_year")
-
     expect(title_element).to_have_text("Test Album")
     expect(year_element).to_have_text("Released: 1234")
-
-    # h3_tags = page.locator("h3")
-    # # album_title_input = page.locator('label[for="title"] >> input')
-    # expect(h3_tags).to_have_text("Test Album")
-    # expect(h3_tags).to_have_text("Released: 1234")
-    # release_year_tag = page.locater(".t-release-year")
-    # expect(release_year_tag).to_have_text("Released: 1234")
-
-#     paragraph_tags = page.locator("p")
-#     expect(h2_tags).to_have_text = 'An Album'
-#     expect(paragraph_tags).to_have_text = 'Released: 2023'
 
 # def test_get_artists(page, test_web_address, db_connection):
 #     db_connection.seed("seeds/music_app.sql")
@@ -85,7 +72,7 @@ def test_visit_album_show_page(page, test_web_address, db_connection):
     page.click("text='Another Album'")
     h1_tag = page.locator("h1")
     expect(h1_tag).to_have_text("Another Album")
-    release_year_tag = page.locator(".t-release-year")
+    release_year_tag = page.locator(".t-release_year")
     expect(release_year_tag).to_have_text("Released: 1999")
 
 
@@ -94,7 +81,7 @@ def test_visit_album_page_and_go_back(page, test_web_address, db_connection):
     db_connection.seed("seeds/music_app.sql")
     page.goto(f"http://{test_web_address}/albums")
     page.click("text='Another Album'")
-    page.click("text='Go back to albums'")
+    page.click('a.button:has-text("Back")')
     h1_tag = page.locator("h1")
     expect(h1_tag).to_have_text("Albums")
 
