@@ -3,17 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Albums</title>
+    <title>Music Library App</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
     <h1>Albums</h1>
-    <div>
-      <h2><a href="/albums/new" class="button">Add An Album</a></h2>
+    <div class="nav">
+      <a href="/landing" class="button">Home</a>
+      <a href="/artists" class="button">Artists</a>
+      <a href="/albums/new" class="button">Add An Album</a>
     </div>
     {% for album in albums %}
     <article>
-      <div>
+      <div class="lists">
         <h2>
           <a href="/albums/{{album.id}}">{{album.title}}</a>
         </h2>

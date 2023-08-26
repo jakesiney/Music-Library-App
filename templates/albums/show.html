@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Album Info</title>
+    <title>Music Library App</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
-    <h1>{{album.title}}</h1>
-    <div><a href="/albums">Go back to albums</a></div>
-    <div>
-      <h2 class="t-release-year">Released: {{album.release_year}}</h2>
+    <h1 class="t-title">{{album.title}}</h1>
+    <div class="nav">
+      <a href="/landing" class="button">Home</a>
+      <a href="/albums" class="button">Back</a>
+      <a href="/album/new" class="button">Delete This Album</a>
+    </div>
+    <div class="lists">
+      <h2 class="t-release_year">Released: {{album.release_year}}</h2>
 
       <h2>Artist id: {{album.artist_id}}</h2>
     </div>
