@@ -16,7 +16,12 @@
     <div class="lists">
       <h2>Genre: {{artist.genre}}</h2>
       <form action="/artists/{{ artist.id }}/delete" method="POST">
-        <input type="submit" value="Delete This Artist" class="button" />
+        <input
+          type="submit"
+          value="Delete This Artist"
+          class="button"
+          onclick="return confirm('Are you sure you want to delete this artist?')"
+        />
       </form>
     </div>
   </body>
