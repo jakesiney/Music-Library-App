@@ -11,13 +11,13 @@
     <div class="nav">
       <a href="/landing" class="button">Home</a>
       <a href="/artists" class="button">Back</a>
-      <form action="/artists/{{ artist.id }}/delete" method="POST">
-        <input type="submit" value="Delete This Artist" class="button" />
-      </form>
     </div>
 
     <div class="lists">
       <h2>Genre: {{artist.genre}}</h2>
+      <form action="/artists/{{ artist.id }}/delete" method="POST">
+        <input type="submit" value="Delete This Artist" class="button" />
+      </form>
     </div>
   </body>
 </html>

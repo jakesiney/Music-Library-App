@@ -113,6 +113,15 @@ def delete_artist(id):
     return redirect('/artists')
 
 
+@app.route('/albums/<id>/delete', methods=['POST'])
+def delete_album(id):
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+
+    repository.delete_album(id)
+    return redirect('/albums')
+
+
 # == Example Code Below ==
 
 # GET /emoji
