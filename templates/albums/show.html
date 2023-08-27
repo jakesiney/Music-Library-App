@@ -16,7 +16,12 @@
       <h2 class="t-release_year">Released: {{album.release_year}}</h2>
       <h2>Artist id: {{album.artist_id}}</h2>
       <form action="/albums/{{ album.id }}/delete" method="POST">
-        <input type="submit" value="Delete This Album" class="button" />
+        <input
+          type="submit"
+          value="Delete This Album"
+          class="button"
+          onclick="return confirm('Are you sure you want to delete this album?')"
+        />
       </form>
     </div>
   </body>
