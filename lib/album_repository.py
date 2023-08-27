@@ -29,3 +29,8 @@ class AlbumRepository:
             'SELECT * from albums WHERE id = %s', [album_id])
         row = rows[0]
         return Album(row["id"], row["title"], row["release_year"], row["artist_id"])
+
+    def delete_album(self, album_id):
+        self._connection.execute(
+            'DELETE FROM albums WHERE id = %s', [album_id])
+        return None
