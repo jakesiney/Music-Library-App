@@ -11,12 +11,13 @@
     <div class="nav">
       <a href="/landing" class="button">Home</a>
       <a href="/albums" class="button">Back</a>
-      <a href="/album/new" class="button">Delete This Album</a>
     </div>
     <div class="lists">
       <h2 class="t-release_year">Released: {{album.release_year}}</h2>
-
       <h2>Artist id: {{album.artist_id}}</h2>
+      <form action="/albums/{{ album.id }}/delete" method="POST">
+        <input type="submit" value="Delete This Album" class="button" />
+      </form>
     </div>
   </body>
 </html>
