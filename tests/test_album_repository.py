@@ -50,3 +50,15 @@ def test_find_album_by_id_two(db_connection):
     db_connection.seed("seeds/music_app.sql")
     repository = AlbumRepository(db_connection)
     assert repository.find_album(2) == Album(2, "Another Album", 1999, 2)
+
+
+"""
+Testing delete an album
+"""
+
+
+def test_delete_an_album(db_connection):
+    db_connection.seed("seeds/music_app.sql")
+    repository = AlbumRepository(db_connection)
+    repository.delete_album(1)
+    assert repository.all() == [Album(2, "Another Album", 1999, 2)]

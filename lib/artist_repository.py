@@ -4,7 +4,6 @@ from lib.artist import Artist
 class ArtistRepository:
     def __init__(self, connection):
         self._connection = connection
-        print(connection)
 
     def all(self):
         rows = self._connection.execute('SELECT * from artists')

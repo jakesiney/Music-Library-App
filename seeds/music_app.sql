@@ -26,12 +26,35 @@ CREATE TABLE albums (
   artist_id int
 );
 
+
+CREATE TABLE songs (
+  id SERIAL PRIMARY KEY,
+  title text,
+  artist_id int,
+  album_id int,
+  FOREIGN KEY (artist_id) REFERENCES artists(id),
+  FOREIGN KEY (album_id) REFERENCES albums(id)
+);
+
+
+
+
+
+
 -- Finally, we add any records that are needed for the tests to run
+
+INSERT INTO albums (title, release_year, artist_id) VALUES ('An Album', 2023, 1);
+INSERT INTO albums (title, release_year, artist_id) VALUES ('Another Album', 1999, 2);
+INSERT INTO albums (title, release_year, artist_id) VALUES ('A Third Album', 2000, 3);
+INSERT INTO albums (title, release_year, artist_id) VALUES ('A Fourth Album', 2001, 4);
 
 INSERT INTO artists (name, genre) VALUES ('Pixies', 'Rock');
 INSERT INTO artists (name, genre) VALUES ('ABBA', 'Pop');
 INSERT INTO artists (name, genre) VALUES ('Taylor Swift', 'Pop');
 INSERT INTO artists (name, genre) VALUES ('Nina Simone', 'Jazz');
 
-INSERT INTO albums (title, release_year, artist_id) VALUES ('An Album', 2023, 1);
-INSERT INTO albums (title, release_year, artist_id) VALUES ('Another Album', 1999, 2);
+INSERT INTO songs (title, artist_id, album_id) VALUES ('A Song', 1, 1);
+INSERT INTO songs (title, artist_id, album_id) VALUES ('Another Song', 2, 2);
+INSERT INTO songs (title, artist_id, album_id) VALUES ('A Third Song', 3, 3);
+INSERT INTO songs (title, artist_id, album_id) VALUES ('A Fourth Song', 4, 4);
+
