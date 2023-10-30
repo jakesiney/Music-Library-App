@@ -1,4 +1,4 @@
-class Song:
+class Track:
     def __init__(self, id, title, artist_id, album_id):
         self.id = id
         self.title = title
@@ -9,4 +9,4 @@ class Song:
         return self.__dict__ == other.__dict__
 
     def __repr__(self):
-        return f"Song({self.id}, {self.title}, {self.artist_id}, {self.album_id})"
+        return f"Track({self.id}, {self.title}, {self.artist_id}, {self.album_id})"

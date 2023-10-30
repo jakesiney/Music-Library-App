@@ -46,6 +46,8 @@ def test_get_albums(page, test_web_address, db_connection):
     expect(h2_tags).to_have_text([
         "An Album",
         "Another Album",
+        "A Third Album",
+        "A Fourth Album"
     ])
 
 

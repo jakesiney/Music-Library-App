@@ -24,5 +24,15 @@
         />
       </form>
     </div>
+
+    {% for album in albums %}
+    <article>
+      <div class="lists">
+        <h2>
+          <a href="/albumsbyartist/<id>/{{ album.id }}">{{ album.title }}</a>
+        </h2>
+      </div>
+    </article>
+    {% endfor %}
   </body>
 </html>

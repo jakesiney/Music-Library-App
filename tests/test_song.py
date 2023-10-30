@@ -1,13 +1,13 @@
-from lib.song import Song
+from lib.track import Track
 
 """
-When creating a song object, should return nothing.
+When creating a track object, should return nothing.
 """
 
 
-def test_create_song_object():
-    song = Song(1, "Test Song", 1, 1)
-    assert song.id == 1
-    assert song.title == "Test Song"
-    assert song.artist_id == 1
-    assert song.album_id == 1
+def test_create_track_object():
+    track = Track(1, "Test Track", 1, 1)
+    assert track.id == 1
+    assert track.title == "Test Track"
+    assert track.artist_id == 1
+    assert track.album_id == 1

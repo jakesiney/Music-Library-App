@@ -4,6 +4,9 @@
 -- database state, and that tests don't interfere with each other.
 
 -- First, we must delete (drop) all our tables
+
+DROP TABLE IF EXISTS tracks;
+DROP SEQUENCE IF EXISTS tracks_id_seq;
 DROP TABLE IF EXISTS artists;
 DROP SEQUENCE IF EXISTS artists_id_seq;
 DROP TABLE IF EXISTS albums;
@@ -27,13 +30,13 @@ CREATE TABLE albums (
 );
 
 
-CREATE TABLE songs (
+CREATE TABLE tracks (
   id SERIAL PRIMARY KEY,
   title text,
   artist_id int,
   album_id int,
-  FOREIGN KEY (artist_id) REFERENCES artists(id),
-  FOREIGN KEY (album_id) REFERENCES albums(id)
+  FOREIGN KEY (artist_id) REFERENCES artists(id) ON DELETE CASCADE,
+  FOREIGN KEY (album_id) REFERENCES albums(id) ON DELETE CASCADE
 );
 
 
@@ -53,8 +56,8 @@ INSERT INTO artists (name, genre) VALUES ('ABBA', 'Pop');
 INSERT INTO artists (name, genre) VALUES ('Taylor Swift', 'Pop');
 INSERT INTO artists (name, genre) VALUES ('Nina Simone', 'Jazz');
 
-INSERT INTO songs (title, artist_id, album_id) VALUES ('A Song', 1, 1);
-INSERT INTO songs (title, artist_id, album_id) VALUES ('Another Song', 2, 2);
-INSERT INTO songs (title, artist_id, album_id) VALUES ('A Third Song', 3, 3);
-INSERT INTO songs (title, artist_id, album_id) VALUES ('A Fourth Song', 4, 4);
+INSERT INTO tracks (title, artist_id, album_id) VALUES ('A Track', 1, 1);
+INSERT INTO tracks (title, artist_id, album_id) VALUES ('Another Track', 2, 2);
+INSERT INTO tracks (title, artist_id, album_id) VALUES ('A Third Track', 3, 3);
+INSERT INTO tracks (title, artist_id, album_id) VALUES ('A Fourth Track', 4, 4);
 
